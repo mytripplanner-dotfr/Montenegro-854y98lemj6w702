@@ -1,0 +1,744 @@
+{
+  "pays": "Montenegro",
+  "drapeau": "🇲🇪",
+  "symbole": "⛰️",
+  "titre": "Montenegro: Évasion Douce entre Montagnes Noires et Mer Adriatique",
+  "budget_total": "Environ 3500-3800 €/personne",
+  "duree": "21 jours",
+  "date_debut": "2026-04-25",
+  "date_fin": "2026-05-16",
+  "temps_vol": "4h30 (format: Xh depuis Marseille, france)",
+  "escale": "1",
+  "jours": [
+    {
+      "jour": 1,
+      "symbole": "🛬",
+      "titre": "Arrivée à Podgorica et Transfert vers Kotor",
+      "legende": "Après votre vol, un court transfert vous mènera à Kotor, perle de l'Adriatique. Prenez le temps de vous installer et de faire une première balade relaxante dans la vieille ville, classée à l'UNESCO, pour vous imprégner de son atmosphère unique.",
+      "lieu": "Kotor",
+      "activites": [
+        "<strong>🛬</strong>: Arrivée à l'aéroport de Podgorica (TGD) et récupération du véhicule de location.",
+        "<strong>🚗</strong>: Transfert panoramique vers Kotor (environ 1h30 de route).",
+        "<strong>🛏️</strong>: Installation à votre hébergement et détente.",
+        "<strong>🚶‍♀️</strong>: Première balade douce dans la Vieille Ville de Kotor, classée à l'UNESCO, pour admirer ses remparts et ses ruelles."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Aéroport de Podgorica, Podgorica",
+          "categorie": "Aéroport",
+          "coords": { "lat": 42.3593, "lng": 19.2519 }
+        },
+        {
+          "nom_recherche": "Vieille Ville de Kotor, Kotor",
+          "categorie": "Ville historique",
+          "coords": { "lat": 42.4247, "lng": 18.7712 }
+        }
+      ],
+      "illustration": "jour1.jpg",
+      "encarts": [
+        {
+          "symbole": "ℹ️",
+          "titre": "Conseil Arrivée",
+          "texte": "Le trajet de l'aéroport à Kotor offre déjà de magnifiques paysages. Prévoyez de récupérer votre voiture de location dès l'arrivée pour plus de flexibilité."
+        }
+      ]
+    },
+    {
+      "jour": 2,
+      "symbole": "⚓",
+      "titre": "Exploration de la Baie de Kotor",
+      "legende": "Découvrez la majestueuse Baie de Kotor, souvent comparée à un fjord. Flânez dans les charmantes villes côtières, imprégnez-vous de l'histoire maritime et laissez-vous bercer par la douceur de vivre au bord de l'eau.",
+      "lieu": "Kotor & Perast",
+      "activites": [
+        "<strong>🚶‍♀️</strong>: Promenade matinale le long des remparts de Kotor et visite de la Cathédrale Saint-Tryphon.",
+        "<strong>🚗</strong>: Route panoramique vers Perast, un village baroque pittoresque.",
+        "<strong>⛵</strong>: Excursion en bateau vers l'île artificielle de Notre-Dame-du-Rocher (Gospa od Škrpjela) et l'île Saint-Georges."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Cathédrale Saint-Tryphon, Kotor",
+          "categorie": "Cathédrale",
+          "coords": { "lat": 42.4242, "lng": 18.7714 }
+        },
+        {
+          "nom_recherche": "Perast, Kotor",
+          "categorie": "Village",
+          "coords": { "lat": 42.4862, "lng": 18.6961 }
+        },
+        {
+          "nom_recherche": "Notre-Dame-du-Rocher, Perast",
+          "categorie": "Île",
+          "coords": { "lat": 42.4922, "lng": 18.6942 }
+        }
+      ],
+      "illustration": "jour2.jpg",
+      "encarts": [
+        {
+          "symbole": "📸",
+          "titre": "Photo Stop",
+          "texte": "Les vues depuis Perast sur les îles sont parmi les plus emblématiques du Monténégro. N'oubliez pas votre appareil photo!"
+        }
+      ]
+    },
+    {
+      "jour": 3,
+      "symbole": "🏞️",
+      "titre": "Mont Lovćen et Ancienne Capitale",
+      "legende": "Élevez-vous au-dessus de la baie pour des panoramas à couper le souffle depuis le Mont Lovćen. Plongez ensuite dans l'histoire monténégrine en explorant Cetinje, l'ancienne capitale royale, avec son charme discret et ses musées.",
+      "lieu": "Mont Lovćen & Cetinje",
+      "activites": [
+        "<strong>🚗</strong>: Montée par la route serpentine vers le Parc National du Lovćen, offrant des vues spectaculaires sur la Baie de Kotor.",
+        "<strong>🚶‍♀️</strong>: Visite du Mausolée de Njegoš au sommet du Mont Lovćen (courte marche d'accès).",
+        "<strong>🏛️</strong>: Exploration de Cetinje, l'ancienne capitale royale, avec le Palais de Biljarda et le Monastère de Cetinje."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Parc National Lovćen, Cetinje",
+          "categorie": "Parc national",
+          "coords": { "lat": 42.3958, "lng": 18.8358 }
+        },
+        {
+          "nom_recherche": "Mausolée de Njegoš, Lovćen",
+          "categorie": "Monument",
+          "coords": { "lat": 42.3958, "lng": 18.8358 }
+        },
+        {
+          "nom_recherche": "Cetinje, Cetinje",
+          "categorie": "Ville historique",
+          "coords": { "lat": 42.3906, "lng": 18.9167 }
+        }
+      ],
+      "illustration": "jour3.jpg",
+      "encarts": [
+        {
+          "symbole": "💡",
+          "titre": "Le saviez-vous ?",
+          "texte": "La route serpentine de Kotor à Lovćen compte 25 virages en épingle, offrant des points de vue incroyables à chaque tournant."
+        }
+      ]
+    },
+    {
+      "jour": 4,
+      "symbole": "🏖️",
+      "titre": "Détente Côtière à Budva",
+      "legende": "Quittez la sérénité de Kotor pour la vibrante Budva. Profitez de ses plages ensoleillées, de sa vieille ville animée et de l'ambiance méditerranéenne pour une journée de pure détente et de flânerie.",
+      "lieu": "Budva",
+      "activites": [
+        "<strong>🚗</strong>: Court trajet vers Budva (environ 30 minutes).",
+        "<strong>🚶‍♀️</strong>: Découverte de la Vieille Ville de Budva, ses remparts et ses petites places.",
+        "<strong>☀️</strong>: Détente sur la plage de Mogren ou Jaz, avec possibilité de baignade si le temps le permet."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Vieille Ville de Budva, Budva",
+          "categorie": "Ville historique",
+          "coords": { "lat": 42.2787, "lng": 18.8398 }
+        },
+        {
+          "nom_recherche": "Plage de Mogren, Budva",
+          "categorie": "Plage",
+          "coords": { "lat": 42.2796, "lng": 18.8315 }
+        }
+      ],
+      "illustration": "jour4.jpg",
+      "encarts": [
+        {
+          "symbole": "🍽️",
+          "titre": "Pause Gourmande",
+          "texte": "Budva regorge de restaurants en bord de mer. Profitez-en pour déguster des fruits de mer frais avec vue sur l'Adriatique."
+        }
+      ]
+    },
+    {
+      "jour": 5,
+      "symbole": "🏝️",
+      "titre": "Sveti Stefan et Plages Secrètes",
+      "legende": "Admirez l'emblématique îlot de Sveti Stefan, symbole du Monténégro. Poursuivez votre exploration le long de la côte pour découvrir des criques isolées et des plages moins fréquentées, parfaites pour un moment de quiétude.",
+      "lieu": "Sveti Stefan & environs",
+      "activites": [
+        "<strong>📸</strong>: Visite du point de vue sur l'îlot de Sveti Stefan, un ancien village de pêcheurs transformé en hôtel de luxe.",
+        "<strong>🚶‍♀️</strong>: Promenade le long de la promenade côtière de Sveti Stefan.",
+        "<strong>🏖️</strong>: Détente sur une des plages environnantes, comme la plage de Miločer ou la plage de Kamenovo."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Sveti Stefan, Budva",
+          "categorie": "Îlot",
+          "coords": { "lat": 42.2556, "lng": 18.8917 }
+        },
+        {
+          "nom_recherche": "Plage de Miločer, Budva",
+          "categorie": "Plage",
+          "coords": { "lat": 42.2608, "lng": 18.8872 }
+        }
+      ],
+      "illustration": "jour5.jpg",
+      "encarts": [
+        {
+          "symbole": "🤫",
+          "titre": "Astuce",
+          "texte": "Pour une vue imprenable sur Sveti Stefan, cherchez le point de vue situé sur la route principale au-dessus de l'îlot."
+        }
+      ]
+    },
+    {
+      "jour": 6,
+      "symbole": "🍷",
+      "titre": "Route des Vins et Lac Skadar",
+      "legende": "Quittez la côte pour l'intérieur des terres et découvrez la région viticole du Monténégro. Terminez la journée au bord du magnifique Lac Skadar, un havre de paix pour la faune et la flore, idéal pour une immersion nature.",
+      "lieu": "Virpazar & Lac Skadar",
+      "activites": [
+        "<strong>🚗</strong>: Route vers la région du Lac Skadar, en passant par des vignobles locaux.",
+        "<strong>🍷</strong>: Dégustation de vins dans un domaine viticole traditionnel monténégrin (ex: Godinje).",
+        "<strong>⛵</strong>: Installation à Virpazar et balade en bateau relaxante sur le Lac Skadar, à la découverte de ses îles et de ses oiseaux."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Virpazar, Bar",
+          "categorie": "Village",
+          "coords": { "lat": 42.2386, "lng": 19.0922 }
+        },
+        {
+          "nom_recherche": "Lac Skadar, Bar",
+          "categorie": "Lac",
+          "coords": { "lat": 42.2333, "lng": 19.2500 }
+        }
+      ],
+      "illustration": "jour6.jpg",
+      "encarts": [
+        {
+          "symbole": "🐦",
+          "titre": "Observation",
+          "texte": "Le Lac Skadar est l'une des plus grandes réserves ornithologiques d'Europe. Gardez l'œil ouvert pour les pélicans frisés!"
+        }
+      ]
+    },
+    {
+      "jour": 7,
+      "symbole": "🌿",
+      "titre": "Nature et Villages Authentiques",
+      "legende": "Poursuivez votre exploration du Parc National du Lac Skadar. Laissez-vous charmer par les petits villages de pêcheurs, les paysages verdoyants et la tranquillité des lieux, propices à la déconnexion et aux balades douces.",
+      "lieu": "Lac Skadar",
+      "activites": [
+        "<strong>🚶‍♀️</strong>: Randonnée facile ou balade à vélo le long des rives du Lac Skadar, à travers les villages de pêcheurs.",
+        "<strong>🚣‍♀️</strong>: Possibilité de louer un kayak pour explorer les criques cachées du lac à votre rythme.",
+        "<strong>🍽️</strong>: Déjeuner dans une taverne locale pour goûter aux spécialités du lac, comme la carpe fumée."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Parc National du Lac Skadar, Bar",
+          "categorie": "Parc national",
+          "coords": { "lat": 42.2333, "lng": 19.2500 }
+        }
+      ],
+      "illustration": "jour7.jpg",
+      "encarts": [
+        {
+          "symbole": "🐟",
+          "titre": "Spécialité",
+          "texte": "Ne manquez pas de goûter la carpe du lac Skadar, souvent préparée de manière traditionnelle avec des légumes locaux."
+        }
+      ]
+    },
+    {
+      "jour": 8,
+      "symbole": "🕌",
+      "titre": "Bar et Ulcinj, Côte Sud",
+      "legende": "Dirigez-vous vers le sud pour découvrir Bar, avec son olivier millénaire et sa vieille ville perchée. Continuez jusqu'à Ulcinj, une ville à l'ambiance orientale, réputée pour ses longues plages de sable et son histoire riche.",
+      "lieu": "Bar & Ulcinj",
+      "activites": [
+        "<strong>🚗</strong>: Route vers Bar (environ 45 minutes).",
+        "<strong>🌳</strong>: Visite du Vieil Olivier de Bar, l'un des plus anciens du monde.",
+        "<strong>🏰</strong>: Exploration de Stari Bar (Vieille Ville de Bar), un site archéologique fascinant.",
+        "<strong>🕌</strong>: Arrivée à Ulcinj et balade dans sa vieille ville fortifiée, avec ses influences ottomanes."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Vieil Olivier de Bar, Bar",
+          "categorie": "Arbre remarquable",
+          "coords": { "lat": 42.0997, "lng": 19.1239 }
+        },
+        {
+          "nom_recherche": "Stari Bar, Bar",
+          "categorie": "Ville historique",
+          "coords": { "lat": 42.0997, "lng": 19.1239 }
+        },
+        {
+          "nom_recherche": "Vieille Ville d'Ulcinj, Ulcinj",
+          "categorie": "Ville historique",
+          "coords": { "lat": 41.9217, "lng": 19.2083 }
+        }
+      ],
+      "illustration": "jour8.jpg",
+      "encarts": [
+        {
+          "symbole": "⏳",
+          "titre": "Record",
+          "texte": "Le Vieil Olivier de Bar est estimé à plus de 2000 ans, un véritable témoin de l'histoire monténégrine."
+        }
+      ]
+    },
+    {
+      "jour": 9,
+      "symbole": "☀️",
+      "titre": "Plages d'Ulcinj et Ada Bojana",
+      "legende": "Profitez des vastes plages de sable d'Ulcinj, idéales pour la détente et les longues promenades. Découvrez ensuite l'atmosphère unique d'Ada Bojana, une île fluviale réputée pour son ambiance bohème et ses couchers de soleil mémorables.",
+      "lieu": "Ulcinj & Ada Bojana",
+      "activites": [
+        "<strong>🏖️</strong>: Détente sur la Velika Plaža (Grande Plage) d'Ulcinj, l'une des plus longues de l'Adriatique.",
+        "<strong>🚶‍♀️</strong>: Promenade le long de la plage ou baignade.",
+        "<strong>🌅</strong>: Visite de l'île d'Ada Bojana, à l'embouchure du fleuve Bojana, connue pour ses restaurants de poissons sur pilotis et son ambiance décontractée."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Velika Plaža, Ulcinj",
+          "categorie": "Plage",
+          "coords": { "lat": 41.8900, "lng": 19.2800 }
+        },
+        {
+          "nom_recherche": "Ada Bojana, Ulcinj",
+          "categorie": "Île",
+          "coords": { "lat": 41.8667, "lng": 19.3667 }
+        }
+      ],
+      "illustration": "jour9.jpg",
+      "encarts": [
+        {
+          "symbole": "🍽️",
+          "titre": "Expérience Culinaire",
+          "texte": "Les restaurants de poissons sur pilotis d'Ada Bojana offrent une expérience unique. Dégustez du poisson fraîchement pêché avec une vue imprenable."
+        }
+      ]
+    },
+    {
+      "jour": 10,
+      "symbole": "🏞️",
+      "titre": "Retour vers le Centre et Podgorica",
+      "legende": "Remontez vers le centre du pays pour explorer Podgorica, la capitale. Bien que moins touristique que la côte, elle offre des parcs verdoyants, des ponts modernes et une ambiance urbaine décontractée, parfaite pour une journée de transition.",
+      "lieu": "Podgorica",
+      "activites": [
+        "<strong>🚗</strong>: Route vers Podgorica (environ 1h30 depuis Ulcinj).",
+        "<strong>🚶‍♀️</strong>: Balade le long de la rivière Morača et découverte du Pont du Millénium.",
+        "<strong>🌳</strong>: Détente dans le parc de Gorica, offrant une vue sur la ville.",
+        "<strong>🏛️</strong>: Visite de la Cathédrale de la Résurrection du Christ, impressionnante par son architecture."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Pont du Millénium, Podgorica",
+          "categorie": "Pont",
+          "coords": { "lat": 42.4450, "lng": 19.2600 }
+        },
+        {
+          "nom_recherche": "Parc de Gorica, Podgorica",
+          "categorie": "Parc",
+          "coords": { "lat": 42.4490, "lng": 19.2500 }
+        },
+        {
+          "nom_recherche": "Cathédrale de la Résurrection du Christ, Podgorica",
+          "categorie": "Cathédrale",
+          "coords": { "lat": 42.4430, "lng": 19.2500 }
+        }
+      ],
+      "illustration": "jour10.jpg",
+      "encarts": [
+        {
+          "symbole": "💡",
+          "titre": "Le saviez-vous ?",
+          "texte": "Podgorica a été presque entièrement reconstruite après la Seconde Guerre mondiale, d'où son architecture moderne contrastant avec les vieilles villes côtières."
+        }
+      ]
+    },
+    {
+      "jour": 11,
+      "symbole": "🏞️",
+      "titre": "Canyon de la Morača et Monastère d'Ostrog",
+      "legende": "Empruntez la route spectaculaire du canyon de la Morača, offrant des paysages grandioses. Terminez la journée par la visite du Monastère d'Ostrog, un lieu de pèlerinage impressionnant, niché à flanc de falaise, pour un moment de recueillement et de sérénité.",
+      "lieu": "Monastère d'Ostrog",
+      "activites": [
+        "<strong>🚗</strong>: Route panoramique à travers le Canyon de la Morača, avec des arrêts photos.",
+        "<strong>🙏</strong>: Visite du Monastère d'Ostrog, un monastère orthodoxe serbe spectaculaire, encastré dans une falaise.",
+        "<strong>🚶‍♀️</strong>: Exploration des différentes églises et des points de vue du monastère."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Canyon de la Morača, Podgorica",
+          "categorie": "Canyon",
+          "coords": { "lat": 42.5800, "lng": 19.3500 }
+        },
+        {
+          "nom_recherche": "Monastère d'Ostrog, Danilovgrad",
+          "categorie": "Monastère",
+          "coords": { "lat": 42.6750, "lng": 19.0350 }
+        }
+      ],
+      "illustration": "jour11.jpg",
+      "encarts": [
+        {
+          "symbole": "⚠️",
+          "titre": "Accès",
+          "texte": "La route menant au Monastère d'Ostrog est étroite et sinueuse. Conduisez prudemment et profitez des vues."
+        }
+      ]
+    },
+    {
+      "jour": 12,
+      "symbole": "🌲",
+      "titre": "Parc National de Biogradska Gora",
+      "legende": "Plongez au cœur de l'une des dernières forêts primaires d'Europe au Parc National de Biogradska Gora. Profitez d'une balade paisible autour du lac glaciaire, entouré d'arbres centenaires, pour une immersion totale dans la nature monténégrine.",
+      "lieu": "Kolašin & Biogradska Gora",
+      "activites": [
+        "<strong>🚗</strong>: Route vers Kolašin (environ 1h30 depuis Ostrog), une station de montagne agréable.",
+        "<strong>🌳</strong>: Visite du Parc National de Biogradska Gora.",
+        "<strong>🚶‍♀️</strong>: Balade facile et relaxante autour du Lac Biogradsko, au cœur de la forêt primaire."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Kolašin, Kolašin",
+          "categorie": "Ville de montagne",
+          "coords": { "lat": 42.8286, "lng": 19.5106 }
+        },
+        {
+          "nom_recherche": "Parc National Biogradska Gora, Kolašin",
+          "categorie": "Parc national",
+          "coords": { "lat": 42.8900, "lng": 19.5900 }
+        },
+        {
+          "nom_recherche": "Lac Biogradsko, Kolašin",
+          "categorie": "Lac",
+          "coords": { "lat": 42.8900, "lng": 19.5900 }
+        }
+      ],
+      "illustration": "jour12.jpg",
+      "encarts": [
+        {
+          "symbole": "🌲",
+          "titre": "Nature",
+          "texte": "Biogradska Gora est l'une des trois dernières forêts vierges d'Europe. Un véritable trésor naturel à préserver."
+        }
+      ]
+    },
+    {
+      "jour": 13,
+      "symbole": "⛰️",
+      "titre": "Détente à Kolašin et Environs",
+      "legende": "Profitez d'une journée de repos et de détente dans la charmante station de montagne de Kolašin. Flânez dans le village, respirez l'air pur des montagnes et savourez la tranquillité de cette région, loin de l'agitation côtière.",
+      "lieu": "Kolašin",
+      "activites": [
+        "<strong>🚶‍♀️</strong>: Promenade dans le centre de Kolašin, découverte de son marché local.",
+        "<strong>☕</strong>: Détente dans un café local, savourant l'ambiance montagnarde.",
+        "<strong>💆‍♀️</strong>: Possibilité de profiter d'un spa ou d'un massage dans l'un des hôtels de Kolašin pour une relaxation profonde."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Kolašin, Kolašin",
+          "categorie": "Ville de montagne",
+          "coords": { "lat": 42.8286, "lng": 19.5106 }
+        }
+      ],
+      "illustration": "jour13.jpg",
+      "encarts": [
+        {
+          "symbole": "🍽️",
+          "titre": "Cuisine Locale",
+          "texte": "Goûtez aux spécialités montagnardes de Kolašin, comme le kačamak (plat à base de maïs et de fromage) ou l'agneau sous la sač (cloche de cuisson)."
+        }
+      ]
+    },
+    {
+      "jour": 14,
+      "symbole": "🌉",
+      "titre": "Pont de Đurđevića Tara et Canyon de la Tara",
+      "legende": "Admirez l'impressionnant Pont de Đurđevića Tara, une merveille d'ingénierie surplombant le canyon de la Tara, le plus profond d'Europe. Profitez des vues spectaculaires et de l'air frais de la montagne pour une journée mémorable.",
+      "lieu": "Canyon de la Tara",
+      "activites": [
+        "<strong>🚗</strong>: Route vers le Pont de Đurđevića Tara (environ 1h depuis Kolašin).",
+        "<strong>📸</strong>: Admiration du Pont de Đurđevića Tara et des vues sur le Canyon de la Tara.",
+        "<strong>🚶‍♀️</strong>: Courte balade le long des rives du canyon pour apprécier la nature environnante."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Pont de Đurđevića Tara, Žabljak",
+          "categorie": "Pont",
+          "coords": { "lat": 43.1500, "lng": 19.2800 }
+        },
+        {
+          "nom_recherche": "Canyon de la Tara, Žabljak",
+          "categorie": "Canyon",
+          "coords": { "lat": 43.2000, "lng": 19.2000 }
+        }
+      ],
+      "illustration": "jour14.jpg",
+      "encarts": [
+        {
+          "symbole": "💡",
+          "titre": "Le saviez-vous ?",
+          "texte": "Le Canyon de la Tara est le deuxième plus profond du monde, juste après le Grand Canyon aux États-Unis."
+        }
+      ]
+    },
+    {
+      "jour": 15,
+      "symbole": "🏞️",
+      "titre": "Lac Noir et Parc National de Durmitor",
+      "legende": "Découvrez la beauté sauvage du Parc National de Durmitor, un site classé à l'UNESCO. Promenez-vous autour du Lac Noir, un joyau glaciaire entouré de forêts denses, pour une journée de pure contemplation et de connexion avec la nature.",
+      "lieu": "Žabljak & Lac Noir",
+      "activites": [
+        "<strong>🚗</strong>: Court trajet vers Žabljak, la ville principale du Durmitor.",
+        "<strong>🚶‍♀️</strong>: Balade relaxante autour du Lac Noir (Crno Jezero), le plus célèbre des lacs glaciaires du Durmitor.",
+        "<strong>🌲</strong>: Profitez de l'air frais et des paysages grandioses du Parc National de Durmitor."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Žabljak, Žabljak",
+          "categorie": "Ville de montagne",
+          "coords": { "lat": 43.1500, "lng": 19.1200 }
+        },
+        {
+          "nom_recherche": "Lac Noir, Žabljak",
+          "categorie": "Lac",
+          "coords": { "lat": 43.1500, "lng": 19.0900 }
+        },
+        {
+          "nom_recherche": "Parc National Durmitor, Žabljak",
+          "categorie": "Parc national",
+          "coords": { "lat": 43.1500, "lng": 19.0900 }
+        }
+      ],
+      "illustration": "jour15.jpg",
+      "encarts": [
+        {
+          "symbole": "📸",
+          "titre": "Moment Photo",
+          "texte": "Le Lac Noir offre des reflets magnifiques des sommets environnants, surtout le matin ou en fin d'après-midi."
+        }
+      ]
+    },
+    {
+      "jour": 16,
+      "symbole": "🚗",
+      "titre": "Route Panoramique du Durmitor",
+      "legende": "Empruntez l'une des routes les plus spectaculaires du Monténégro, la 'boucle du Durmitor'. Cette journée sera dédiée aux paysages grandioses, aux petits villages de montagne et aux arrêts photos impromptus, pour une immersion totale dans la beauté sauvage des Balkans.",
+      "lieu": "Parc National de Durmitor",
+      "activites": [
+        "<strong>🚗</strong>: Journée dédiée à la 'boucle du Durmitor', une route panoramique offrant des vues incroyables sur les montagnes et les plateaux.",
+        "<strong>📸</strong>: Arrêts fréquents pour admirer les paysages, les bergeries traditionnelles et les lacs glaciaires (ex: Lac de Pošćenski).",
+        "<strong>🚶‍♀️</strong>: Courtes balades pour s'imprégner de l'atmosphère des hauts plateaux."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Parc National Durmitor, Žabljak",
+          "categorie": "Parc national",
+          "coords": { "lat": 43.1500, "lng": 19.0900 }
+        }
+      ],
+      "illustration": "jour16.jpg",
+      "encarts": [
+        {
+          "symbole": "🐑",
+          "titre": "Rencontre",
+          "texte": "Vous croiserez probablement des troupeaux de moutons et des bergers sur cette route. Respectez leur espace et leur travail."
+        }
+      ]
+    },
+    {
+      "jour": 17,
+      "symbole": "🏞️",
+      "titre": "Retour vers la Côte Adriatique",
+      "legende": "Après l'air pur des montagnes, entamez votre retour vers la côte adriatique. Profitez du trajet pour admirer les changements de paysages, des sommets escarpés aux eaux scintillantes, et préparez-vous à retrouver l'ambiance méditerranéenne.",
+      "lieu": "Retour vers la Baie de Kotor",
+      "activites": [
+        "<strong>🚗</strong>: Long trajet de retour vers la Baie de Kotor (environ 3-4 heures de route depuis Žabljak).",
+        "<strong>🍽️</strong>: Déjeuner en chemin dans une petite ville ou un village.",
+        "<strong>🛏️</strong>: Installation dans un nouvel hébergement dans la Baie de Kotor (ex: Tivat ou Herceg Novi) pour varier les plaisirs."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Tivat, Tivat",
+          "categorie": "Ville côtière",
+          "coords": { "lat": 42.4333, "lng": 18.6922 }
+        },
+        {
+          "nom_recherche": "Herceg Novi, Herceg Novi",
+          "categorie": "Ville côtière",
+          "coords": { "lat": 42.4500, "lng": 18.5333 }
+        }
+      ],
+      "illustration": "jour17.jpg",
+      "encarts": [
+        {
+          "symbole": "🗺️",
+          "titre": "Itinéraire",
+          "texte": "Choisissez une route différente pour le retour afin de découvrir de nouveaux paysages et points de vue."
+        }
+      ]
+    },
+    {
+      "jour": 18,
+      "symbole": "⛵",
+      "titre": "Croisière Relaxante dans la Baie",
+      "legende": "Offrez-vous une journée de pure détente avec une croisière dans la Baie de Kotor. Laissez-vous porter par les eaux calmes, admirez les villages côtiers depuis la mer et profitez du soleil pour un moment de sérénité absolue.",
+      "lieu": "Baie de Kotor",
+      "activites": [
+        "<strong>⛵</strong>: Croisière relaxante d'une journée dans la Baie de Kotor, passant par les îles et les villages.",
+        "<strong>🏊‍♀️</strong>: Possibilité de baignade dans des criques isolées accessibles uniquement par bateau.",
+        "<strong>🍽️</strong>: Déjeuner à bord ou dans un restaurant de fruits de mer dans un village côtier."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Baie de Kotor, Kotor",
+          "categorie": "Baie",
+          "coords": { "lat": 42.4500, "lng": 18.6500 }
+        }
+      ],
+      "illustration": "jour18.jpg",
+      "encarts": [
+        {
+          "symbole": "☀️",
+          "titre": "Protection",
+          "texte": "N'oubliez pas votre crème solaire et un chapeau, le soleil peut être intense même en avril/mai sur l'eau."
+        }
+      ]
+    },
+    {
+      "jour": 19,
+      "symbole": "🚶‍♀️",
+      "titre": "Flânerie et Shopping à Kotor",
+      "legende": "Profitez d'une dernière journée pour flâner à votre rythme dans la vieille ville de Kotor. Explorez ses boutiques d'artisanat, dégustez une glace sur une place ensoleillée et achetez quelques souvenirs pour prolonger la magie de votre voyage.",
+      "lieu": "Kotor",
+      "activites": [
+        "<strong>🚶‍♀️</strong>: Flânerie libre dans les ruelles de la Vieille Ville de Kotor, découverte de ses recoins cachés.",
+        "<strong>🛍️</strong>: Shopping de souvenirs et d'artisanat local.",
+        "<strong>☕</strong>: Pause café ou glace sur une terrasse ensoleillée.",
+        "<strong>🌅</strong>: Coucher de soleil sur la baie depuis les remparts inférieurs."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Vieille Ville de Kotor, Kotor",
+          "categorie": "Ville historique",
+          "coords": { "lat": 42.4247, "lng": 18.7712 }
+        }
+      ],
+      "illustration": "jour19.jpg",
+      "encarts": [
+        {
+          "symbole": "🎁",
+          "titre": "Souvenirs",
+          "texte": "Cherchez des produits locaux comme l'huile d'olive, le miel ou des objets en bois sculpté pour des souvenirs authentiques."
+        }
+      ]
+    },
+    {
+      "jour": 20,
+      "symbole": "🏛️",
+      "titre": "Derniers Instants à Podgorica",
+      "legende": "Retournez à Podgorica pour une dernière immersion dans la capitale. Profitez-en pour visiter un musée, vous détendre dans un parc ou simplement vous imprégner de l'ambiance locale avant votre départ, en toute tranquillité.",
+      "lieu": "Podgorica",
+      "activites": [
+        "<strong>🚗</strong>: Trajet retour vers Podgorica (environ 1h30 depuis Kotor).",
+        "<strong>🏛️</strong>: Visite du Musée de la Ville de Podgorica ou de la Galerie d'Art.",
+        "<strong>🌳</strong>: Détente dans le parc de la ville ou le long de la rivière Ribnica.",
+        "<strong>🍽️</strong>: Dîner d'adieu dans un restaurant typique de Podgorica."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Musée de la Ville de Podgorica, Podgorica",
+          "categorie": "Musée",
+          "coords": { "lat": 42.4410, "lng": 19.2600 }
+        },
+        {
+          "nom_recherche": "Parc de la Ville, Podgorica",
+          "categorie": "Parc",
+          "coords": { "lat": 42.4410, "lng": 19.2600 }
+        }
+      ],
+      "illustration": "jour20.jpg",
+      "encarts": [
+        {
+          "symbole": "✈️",
+          "titre": "Préparation",
+          "texte": "Assurez-vous que votre véhicule de location est prêt pour le retour et que vous avez fait le plein d'essence."
+        }
+      ]
+    },
+    {
+      "jour": 21,
+      "symbole": "🛫",
+      "titre": "Départ de Podgorica",
+      "legende": "C'est le moment de dire au revoir au Monténégro. Après un dernier petit-déjeuner, vous vous dirigerez vers l'aéroport de Podgorica pour votre vol retour, la tête remplie de souvenirs inoubliables de ce voyage relaxant.",
+      "lieu": "Podgorica",
+      "activites": [
+        "<strong>☕</strong>: Dernier petit-déjeuner monténégrin.",
+        "<strong>🚗</strong>: Restitution du véhicule de location à l'aéroport de Podgorica.",
+        "<strong>🛫</strong>: Vol retour vers Marseille, France."
+      ],
+      "points_interet": [
+        {
+          "nom_recherche": "Aéroport de Podgorica, Podgorica",
+          "categorie": "Aéroport",
+          "coords": { "lat": 42.3593, "lng": 19.2519 }
+        }
+      ],
+      "illustration": "jour21.jpg",
+      "encarts": [
+        {
+          "symbole": "👋",
+          "titre": "Au Revoir",
+          "texte": "Le Monténégro, avec ses paysages variés et son ambiance paisible, vous laissera des souvenirs impérissables."
+        }
+      ]
+    }
+  ],
+  "detail_budget": [
+    { "titre": "Budget vol:", "legende": "A partir de 474 €/pers", "symbole": "🛬" },
+    { "titre": "Budget transports:", "legende": "Environ 500 €/pers (location voiture + essence)", "symbole": "🚗" },
+    { "titre": "Budget repas:", "legende": "Environ 1500 €/pers (21 jours, 3 repas/jour)", "symbole": "🥗" },
+    { "titre": "Budget logement:", "legende": "Environ 850 €/pers (20 nuits, hôtels 3* ou appartements)", "symbole": "🛏️" },
+    { "titre": "Budget activités:", "legende": "Environ 250 €/pers (entrées parcs, musées, excursions bateau)", "symbole": "🎭" }
+  ],
+  "periodes_ideales": [
+    { "titre": "Avril - Mai", "symbole": "🌸" },
+    { "titre": "Septembre - Octobre", "symbole": "🍂" }
+  ],
+  "infos_pratiques": [
+    { "titre": "En avril-mai, les températures sont douces (15-25°C). Prévoir des couches pour les soirées et les montagnes, ainsi qu'un imperméable.", "symbole": "☀️" },
+    { "titre": "La monnaie est l'Euro (€). Les cartes de crédit sont largement acceptées, mais ayez du liquide pour les petits commerces ou marchés.", "symbole": "💳" },
+    { "titre": "Le permis de conduire français est suffisant. La conduite est à droite. Les routes de montagne peuvent être sinueuses, soyez vigilant.", "symbole": "🚗" },
+    { "titre": "Une carte SIM locale (Telenor, M:tel) ou une eSIM est recommandée pour rester connecté. Le Wi-Fi est disponible dans la plupart des hébergements.", "symbole": "📶" },
+    { "titre": "La langue officielle est le monténégrin. L'anglais est parlé dans les zones touristiques, l'italien et l'allemand sont également compris.", "symbole": "🗣️" }
+  ],
+  "infos_decallees": [
+    {
+      "symbole": "💡",
+      "titre": "Le saviez-vous ?",
+      "texte": "Le nom 'Montenegro' signifie 'Montagne Noire', faisant référence aux forêts sombres qui recouvraient autrefois les Alpes dinariques du pays."
+    },
+    {
+      "symbole": "🙃",
+      "titre": "Insolite",
+      "texte": "Le Monténégro est l'un des rares pays au monde à avoir une 'Déclaration écologique' dans sa constitution, proclamant le pays comme un État écologique en 1991."
+    }
+  ],
+  "specialites_culinaires": [
+    {
+      "symbole": "🍖",
+      "titre": "Njeguški pršut",
+      "description": "Un jambon fumé et séché à l'air, originaire du village de Njeguši. Sa saveur unique est due au microclimat local et au processus de fumage traditionnel."
+    },
+    {
+      "symbole": "🧀",
+      "titre": "Kajmak",
+      "description": "Une crème de lait fermentée, riche et onctueuse, souvent servie avec du pain frais, de la viande grillée ou comme accompagnement de nombreux plats monténégrins."
+    },
+    {
+      "symbole": "🐟",
+      "titre": "Riblji paprikaš",
+      "description": "Un ragoût de poisson épicé, particulièrement populaire autour du Lac Skadar. Il est généralement préparé avec de la carpe ou d'autres poissons d'eau douce, mijotés avec des légumes et du paprika."
+    }
+  ],
+  "liens_utiles": [
+    { "legende": "Vols", "titre": "Réserve ton vol", "url": "https://www.kayak.fr/flights/MRS-TGD/2026-04-25/2026-05-16", "symbole": "🛬" },
+    { "legende": "Infos officielles et inspirations", "titre": "Office National du Tourisme du Monténégro", "url": "https://www.montenegro.travel/", "symbole": "📘" },
+    { "legende": "Location de voiture", "titre": "Comparateur de location de voiture", "url": "https://www.rentalcars.com/", "symbole": "🚗" },
+    { "legende": "Météo", "titre": "Météo Monténégro", "url": "https://www.accuweather.com/fr/me/montenegro-weather", "symbole": "🌤️" }
+  ]
+}
