@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Voyage - Montenegro</title>
+  <style>
+    :root { --primary: #1a73e8; --bg-sidebar: #ffffff; }
+    body { margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Arial, sans-serif; display: flex; height: 100vh; height: 100dvh; overflow: hidden; color: #333; }
+    #sidebar { width: 400px; background: var(--bg-sidebar); height: 100%; display: flex; flex-direction: column; box-shadow: 4px 0 15px rgba(0,0,0,0.08); z-index: 10; transition: 0.3s ease; }
+    #map { flex: 1; height: 100%; position: relative; }
+    
+    .sidebar-header { padding: 10px 15px; border-bottom: 1px solid #eee; background: #fff; flex-shrink: 0; }
+    .filter-group { display: flex; overflow-x: auto; white-space: nowrap; gap: 8px; padding: 5px 0 10px 0; scrollbar-width: none; }
+    .filter-btn { padding: 8px 16px; border: 1px solid #dfe1e5; border-radius: 20px; background: white; cursor: pointer; font-size: 13px; font-weight: 600; }
+    .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    .step-nav { display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
+    .step-badge { padding: 6px 12px; border-radius: 15px; font-size: 11px; font-weight: 700; background: #f1f3f4; color: #5f6368; cursor: pointer; white-space: nowrap; border: 1px solid transparent; }
+    .step-badge.active { background: #e8f0fe; color: var(--primary); border-color: var(--primary); }
+
+    #poi-content { flex-grow: 1; overflow-y: auto; position: relative; }
+    .poi-detail { display: flex; flex-direction: column; min-height: 100%; }
+    .close-details { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.6); color: white; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; z-index: 20; font-size: 20px; }
+    .poi-image { width: 100%; height: 230px; object-fit: cover; background: #eee; }
+    .poi-body { padding: 20px; flex-grow: 1; }
+    .poi-body h2 { margin: 0 0 10px 0; font-size: 20px; line-height: 1.3; }
+    
+    .badge-container { margin-bottom: 10px; }
+    .badge { display: inline-block; background: #f1f3f4; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-right: 5px; }
+    .badge-day { background: #e8f0fe; color: var(--primary); }
+    
+    .btn-group { display: flex; gap: 10px; padding: 15px 20px; background: #fff; border-top: 1px solid #f0f0f0; position: sticky; bottom: 0; }
+    .btn { flex: 1; text-align: center; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .btn-main { background: var(--primary); color: white; }
+    .btn-outline { border: 1px solid #dadce0; color: #1a73e8; }
+    .placeholder { padding: 40px 20px; text-align: center; color: #70757a; font-size: 14px; }
+
+    @media (max-width: 768px) {
+      body { flex-direction: column-reverse; }
+      #sidebar { width: 100%; max-height: 55%; }
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <div class="sidebar-header">
+      <div class="filter-group" id="day-filters">
+        <button class="filter-btn active" onclick="filterByDay('all', this)">Toutes</button>
+      </div>
+    </div>
+    <div id="poi-content">
+      <div class="placeholder">Sélectionnez une journée pour explorer les étapes.</div>
+    </div>
+  </div>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+  <script>
+    let map, markerCluster;
+    let markersArray = [];
+    let initialCenter, initialZoom;
+    const locations = [{"lat":42.3678298,"lng":19.2467466,"name":"Aéroport de Podgorica, Podgorica","jour":1,"titre":"","type":"aéroport","markerColor":"yellow","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.3678298,19.2467466&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.3678298,19.2467466"},{"lat":42.424662,"lng":18.771234,"name":"Vieille Ville de Kotor, Kotor","jour":1,"titre":"","type":"ville historique","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.424662,18.771234&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.424662,18.771234"},{"lat":42.4241629,"lng":18.7715112,"name":"Cathédrale Saint-Tryphon, Kotor","jour":2,"titre":"","type":"cathédrale","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.4241629,18.7715112&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.4241629,18.7715112"},{"lat":42.4860253,"lng":18.698297,"name":"Perast, Kotor","jour":2,"titre":"","type":"village","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.4860253,18.698297&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.4860253,18.698297"},{"lat":42.4867213,"lng":18.6887358,"name":"Notre-Dame-du-Rocher, Perast","jour":2,"titre":"","type":"île","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.4867213,18.6887358&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.4867213,18.6887358"},{"lat":42.397607,"lng":18.8432656,"name":"Parc National Lovćen, Cetinje","jour":3,"titre":"","type":"parc national","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.397607,18.8432656&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.397607,18.8432656"},{"lat":42.3994444,"lng":18.8188889,"name":"Mausolée de Njegoš, Lovćen","jour":3,"titre":"","type":"monument","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.3994444,18.8188889&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.3994444,18.8188889"},{"lat":42.394253,"lng":18.9166266,"name":"Cetinje, Cetinje","jour":3,"titre":"","type":"ville historique","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.394253,18.9166266&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.394253,18.9166266"},{"lat":42.2772904,"lng":18.838323,"name":"Vieille Ville de Budva, Budva","jour":4,"titre":"","type":"ville historique","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.2772904,18.838323&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.2772904,18.838323"},{"lat":42.2770636,"lng":18.83259,"name":"Plage de Mogren, Budva","jour":4,"titre":"","type":"plage","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.2770636,18.83259&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.2770636,18.83259"},{"lat":42.2515444,"lng":18.8982264,"name":"Sveti Stefan, Budva","jour":5,"titre":"","type":"îlot","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.2515444,18.8982264&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.2515444,18.8982264"},{"lat":42.2606398,"lng":18.8933056,"name":"Plage de Miločer, Budva","jour":5,"titre":"","type":"plage","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.2606398,18.8933056&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.2606398,18.8933056"},{"lat":42.238938,"lng":19.089904,"name":"Virpazar, Bar","jour":6,"titre":"","type":"village","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.238938,19.089904&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.238938,19.089904"},{"lat":42.1837016,"lng":19.2914983,"name":"Lac Skadar, Bar","jour":6,"titre":"","type":"lac","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.1837016,19.2914983&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.1837016,19.2914983"},{"lat":42.1837016,"lng":19.2914983,"name":"Parc National du Lac Skadar, Bar","jour":7,"titre":"","type":"parc national","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.1837016,19.2914983&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.1837016,19.2914983"},{"lat":42.0912106,"lng":19.089904,"name":"Vieil Olivier de Bar, Bar","jour":8,"titre":"","type":"arbre remarquable","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.0912106,19.089904&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.0912106,19.089904"},{"lat":42.0963895,"lng":19.1359789,"name":"Stari Bar, Bar","jour":8,"titre":"","type":"ville historique","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.0963895,19.1359789&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.0963895,19.1359789"},{"lat":41.9232742,"lng":19.201938,"name":"Vieille Ville d'Ulcinj, Ulcinj","jour":8,"titre":"","type":"ville historique","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=41.9232742,19.201938&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=41.9232742,19.201938"},{"lat":41.894364,"lng":19.2902156,"name":"Velika Plaža, Ulcinj","jour":9,"titre":"","type":"plage","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=41.894364,19.2902156&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=41.894364,19.2902156"},{"lat":41.86199999999999,"lng":19.361,"name":"Ada Bojana, Ulcinj","jour":9,"titre":"","type":"île","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=41.86199999999999,19.361&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=41.86199999999999,19.361"},{"lat":42.4450105,"lng":19.2589501,"name":"Pont du Millénium, Podgorica","jour":10,"titre":"","type":"pont","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.4450105,19.2589501&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.4450105,19.2589501"},{"lat":42.4434889,"lng":19.2727453,"name":"Parc de Gorica, Podgorica","jour":10,"titre":"","type":"parc","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.4434889,19.2727453&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.4434889,19.2727453"},{"lat":42.4457016,"lng":19.2482484,"name":"Cathédrale de la Résurrection du Christ, Podgorica","jour":10,"titre":"","type":"cathédrale","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.4457016,19.2482484&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.4457016,19.2482484"},{"lat":42.4378372,"lng":19.2547014,"name":"Canyon de la Morača, Podgorica","jour":11,"titre":"","type":"canyon","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.4378372,19.2547014&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.4378372,19.2547014"},{"lat":42.6687702,"lng":19.029505,"name":"Monastère d'Ostrog, Danilovgrad","jour":11,"titre":"","type":"monastère","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.6687702,19.029505&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.6687702,19.029505"},{"lat":42.8204751,"lng":19.5240814,"name":"Kolašin, Kolašin","jour":12,"titre":"","type":"ville de montagne","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.8204751,19.5240814&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.8204751,19.5240814"},{"lat":42.8920363,"lng":19.6103673,"name":"Parc National Biogradska Gora, Kolašin","jour":12,"titre":"","type":"parc national","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.8920363,19.6103673&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.8920363,19.6103673"},{"lat":42.8961943,"lng":19.6018125,"name":"Lac Biogradsko, Kolašin","jour":12,"titre":"","type":"lac","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.8961943,19.6018125&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.8961943,19.6018125"},{"lat":42.8204751,"lng":19.5240814,"name":"Kolašin, Kolašin","jour":13,"titre":"","type":"ville de montagne","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.8204751,19.5240814&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.8204751,19.5240814"},{"lat":43.1549898,"lng":19.1207439,"name":"Pont de Đurđevića Tara, Žabljak","jour":14,"titre":"","type":"pont","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=43.1549898,19.1207439&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=43.1549898,19.1207439"},{"lat":43.1549898,"lng":19.1207439,"name":"Canyon de la Tara, Žabljak","jour":14,"titre":"","type":"canyon","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=43.1549898,19.1207439&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=43.1549898,19.1207439"},{"lat":43.1549898,"lng":19.1207439,"name":"Žabljak, Žabljak","jour":15,"titre":"","type":"ville de montagne","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=43.1549898,19.1207439&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=43.1549898,19.1207439"},{"lat":43.1549898,"lng":19.1207439,"name":"Lac Noir, Žabljak","jour":15,"titre":"","type":"lac","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=43.1549898,19.1207439&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=43.1549898,19.1207439"},{"lat":43.2117033,"lng":19.1169945,"name":"Parc National Durmitor, Žabljak","jour":15,"titre":"","type":"parc national","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=43.2117033,19.1169945&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=43.2117033,19.1169945"},{"lat":43.2117033,"lng":19.1169945,"name":"Parc National Durmitor, Žabljak","jour":16,"titre":"","type":"parc national","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=43.2117033,19.1169945&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=43.2117033,19.1169945"},{"lat":42.4317899,"lng":18.6989746,"name":"Tivat, Tivat","jour":17,"titre":"","type":"ville côtière","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.4317899,18.6989746&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.4317899,18.6989746"},{"lat":42.4572478,"lng":18.5314753,"name":"Herceg Novi, Herceg Novi","jour":17,"titre":"","type":"ville côtière","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.4572478,18.5314753&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.4572478,18.5314753"},{"lat":42.424662,"lng":18.771234,"name":"Baie de Kotor, Kotor","jour":18,"titre":"","type":"baie","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.424662,18.771234&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.424662,18.771234"},{"lat":42.424662,"lng":18.771234,"name":"Vieille Ville de Kotor, Kotor","jour":19,"titre":"","type":"ville historique","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.424662,18.771234&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.424662,18.771234"},{"lat":42.4304196,"lng":19.2593642,"name":"Musée de la Ville de Podgorica, Podgorica","jour":20,"titre":"","type":"musée","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.4304196,19.2593642&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.4304196,19.2593642"},{"lat":42.4292751,"lng":19.2499633,"name":"Parc de la Ville, Podgorica","jour":20,"titre":"","type":"parc","markerColor":"blue","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.4292751,19.2499633&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.4292751,19.2499633"},{"lat":42.3678298,"lng":19.2467466,"name":"Aéroport de Podgorica, Podgorica","jour":21,"titre":"","type":"aéroport","markerColor":"yellow","streetViewUrl":"https://maps.googleapis.com/maps/api/streetview?size=600x400&location=42.3678298,19.2467466&key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI","streetViewLinkUrl":"https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=42.3678298,19.2467466"}];
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoomControl: true,
+        streetViewControl: false,
+        mapTypeControl: false,
+        styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }]
+      });
+
+      const days = [...new Set(locations.map(l => l.jour))].sort((a,b) => a - b);
+      const filterContainer = document.getElementById('day-filters');
+      days.forEach(day => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.innerText = 'Jour ' + day;
+        btn.onclick = function() { filterByDay(day, this); };
+        filterContainer.appendChild(btn);
+      });
+
+      const bounds = new google.maps.LatLngBounds();
+      locations.forEach((loc, index) => {
+        const marker = new google.maps.Marker({
+          position: { lat: loc.lat, lng: loc.lng },
+          // URL corrigée pour les icônes
+          icon: 'https://maps.google.com/mapfiles/ms/icons/' + loc.markerColor + '-dot.png',
+          label: { text: String(loc.jour), color: 'white', fontSize: '11px', fontWeight: 'bold' },
+          data: loc
+        });
+        marker.addListener('click', () => updateSidebar(loc));
+        markersArray.push(marker);
+        bounds.extend(marker.getPosition());
+      });
+
+      markerCluster = new markerClusterer.MarkerClusterer({ map, markers: markersArray });
+
+      if (locations.length > 0) {
+        map.fitBounds(bounds);
+        google.maps.event.addListenerOnce(map, 'idle', () => {
+          if (map.getZoom() > 14) map.setZoom(14);
+          initialCenter = map.getCenter();
+          initialZoom = map.getZoom();
+        });
+      }
+    }
+
+    function updateSidebar(poi) {
+      const container = document.getElementById('poi-content');
+      const daySteps = locations.filter(l => l.jour === poi.jour);
+      let stepHtml = '';
+      
+      if (daySteps.length > 1) {
+        stepHtml = '<div class="step-nav">';
+        daySteps.forEach((step, idx) => {
+          const active = (step.name === poi.name && step.lat === poi.lat) ? 'active' : '';
+          const locIdx = locations.findIndex(l => l === step);
+          stepHtml += `<div class="step-badge ${active}" onclick="updateSidebarByIndex(${locIdx})">Étape ${idx + 1}</div>`;
+        });
+        stepHtml += '</div>';
+      }
+
+      container.innerHTML = `
+        <div class="poi-detail">
+          <button class="close-details" onclick="closeSidebar()">✕</button>
+          <img src="${poi.streetViewUrl}" class="poi-image" onerror="this.style.display='none'">
+          <div class="poi-body">
+            ${stepHtml}
+            <div class="badge-container">
+              <span class="badge badge-day">Jour ${poi.jour}</span>
+              <span class="badge">${poi.type}</span>
+            </div>
+            <h2>${poi.name}</h2>
+            <p>${poi.titre}</p>
+          </div>
+          <div class="btn-group">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=${poi.lat},${poi.lng}" target="_blank" class="btn btn-main">Itinéraire</a>
+            <a href="${poi.streetViewLinkUrl}" target="_blank" class="btn btn-outline">Street View</a>
+          </div>
+        </div>
+      `;
+      
+      // Déplacement et zoom unique ici
+      map.panTo({ lat: poi.lat, lng: poi.lng });
+      map.setZoom(14);
+      container.scrollTop = 0;
+    }
+
+    window.updateSidebarByIndex = function(index) {
+      updateSidebar(locations[index]);
+    };
+
+    function filterByDay(day, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filteredMarkers = day === 'all' ? markersArray : markersArray.filter(m => m.data.jour === day);
+      markerCluster.clearMarkers();
+      markerCluster.addMarkers(filteredMarkers);
+
+      if (day === 'all') {
+        map.setCenter(initialCenter);
+        map.setZoom(initialZoom);
+        closeSidebar();
+      } else if (filteredMarkers.length > 0) {
+        // Appelle la sidebar pour le premier point, qui gère aussi le panTo/zoom
+        updateSidebar(filteredMarkers[0].data);
+      }
+    }
+
+    function closeSidebar() {
+      document.getElementById('poi-content').innerHTML = '<div class="placeholder">Sélectionnez une journée pour explorer les étapes.</div>';
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5WUNvRC9eOjHRLt92fs4hsp0Auje3aAI&callback=initMap"></script>
+</body>
+</html>
